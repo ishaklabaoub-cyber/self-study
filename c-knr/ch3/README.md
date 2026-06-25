@@ -24,7 +24,7 @@
 ### Key takeaway
 - Tracking the loop and consider the condition of the loop after it ended.
 
-###Session 2 - 25/06/2026
+### Session 2 - 25/06/2026
 **Time spent:** 2.5 hrs
 
 ### What i covered
