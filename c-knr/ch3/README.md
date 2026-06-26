@@ -46,3 +46,8 @@
 ### Key takeaway
 - Whenever the input and the output don't have 1 to 1 character correspondence , you need to seperate the indices for synchronization
 
+### Session 3 - 26/06/2026
+**Time spent:** 4 hrs
+
+### What i covered
+D
