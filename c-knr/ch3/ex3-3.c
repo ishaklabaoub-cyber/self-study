@@ -27,8 +27,7 @@ void expand(char *s1,char* s2){
    		   (s1[i] >= 'A' && s1[i+2] <= 'Z')||
 		   (s1[i] >= '0' && s1[i+2] <= '9'))){
 			for(char c = s1[i];c <= s1[i + 2];c++){
-				s2[j++] = c;
-			
+				s2[j++] = c;	
 			}
 			i += 2;	
 		}else{
