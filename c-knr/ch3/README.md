@@ -50,4 +50,25 @@
 **Time spent:** 4 hrs
 
 ### What i covered
-D
+- Do While Loops
+
+### What clicked easily 
+- Loop logic 
+- Functions given like itoa or atoi
+
+### What took time
+- Figuring out the best optimized way to do the exercise 
+
+### Exercises
+| Exercise | Description | Status |
+|----------|-------------|--------|
+| 3-3 | expand() was a bit tricky with the expantion and string manipulation| ✅ |
+| 3-4 | fixing itoa() considering boundaries|  ✅  |
+|3-5  |itob() function two attempts| ✅ |
+
+
+### Key takeaway
+- Attention to repeated patterns and logic in the code , just make one condition to cover it (NOT always ! ,if the situation needs this) 
+- Always check edge cases
+
+
