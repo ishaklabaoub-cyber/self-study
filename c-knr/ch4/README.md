@@ -24,4 +24,4 @@
 | 4-2 | atof to handle scientific notation form| ✅ |
 
 **Key takeaway:**
-- Always keep things simple and clean as possible as you can so the code is readable and and easier to maintain.
+- Always keep things simple and clean as possible as you can so the code is readable and easier to maintain.
