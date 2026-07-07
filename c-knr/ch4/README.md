@@ -28,17 +28,18 @@
 
 ### Session 2 - 7/07/2026
 
-**Time spent:** 30 mins
+**Time spent:** 1h.
 
 ### What I covered
-- External variables
+- External variables.
 
 ### What clicked easily
-- The lesson
+- The lesson.
 ### What took time
-- Honestly nothing even the exercise is simple
+- Honestly nothing even the exercises are simple enough.
 
 ### Exercises
 | Exercise | Description | Status |
 |----------|-------------|--------|
 | 4-3 | Added the % option in the reverse polish calculator | ✅ |
+| 4-4 | added some commands to the calculator | ✅ |  
