@@ -25,3 +25,20 @@
 
 **Key takeaway:**
 - Always keep things simple and clean as possible as you can so the code is readable and easier to maintain.
+
+### Session 2 - 7/07/2026
+
+**Time spent:** 30 mins
+
+### What I covered
+- External variables
+
+### What clicked easily
+- The lesson
+### What took time
+- Honestly nothing even the exercise is simple
+
+### Exercises
+| Exercise | Description | Status |
+|----------|-------------|--------|
+| 4-3 | Added the % option in the reverse polish calculator | ✅ |
