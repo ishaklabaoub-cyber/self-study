@@ -44,7 +44,7 @@
 | 4-3 | Added the % option in the reverse polish calculator | ✅ |
 | 4-4 | added some commands to the calculator | ✅ |
 
-### Session 2 - 9/07/2026
+### Session 3 - 9/07/2026
 
 **Time spent:** 5 hrs.
 
