@@ -42,4 +42,25 @@
 | Exercise | Description | Status |
 |----------|-------------|--------|
 | 4-3 | Added the % option in the reverse polish calculator | ✅ |
-| 4-4 | added some commands to the calculator | ✅ |  
+| 4-4 | added some commands to the calculator | ✅ |
+
+### Session 2 - 9/07/2026
+
+**Time spent:** 5 hrs.
+
+### What i covered 
+- The same lesson (has a lot of exercises)
+### What took time
+- Discover the appropriate design system for the exercise
+
+### Exercises
+| Exercise | Description | Status |
+|----------|-------------|--------|
+| 4-5 | Adding the (sin,cos,exp,pow) to the calculator| ✅ |
+| 4-6 | Added some commands to handle variable (got stuck on this one) | ✅ |
+| 4-7 | Added the ungets() function to pushback an entire string | ✅ |
+| 4-8 | Configuring getch() and ungetch() to handle just one character | ✅ |
+| 4-9 | Working with the previous exercise solution to accept EOF as an input | ✅ |
+
+**Key Takeaway:** 
+-  When encounter with a problem with flags and machine state , using a pencil and a paper to trace execution helps a lot and saves a lot of time.
