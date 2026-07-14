@@ -64,3 +64,21 @@
 
 **Key Takeaway:** 
 -  When encounter with a problem with flags and machine state , using a pencil and a paper to trace execution helps a lot and saves a lot of time.
+### Session 3 - 14/07/2026
+**Time spent:** 1.5hr
+### What i covered 
+- Static variables.
+
+### What clicked easily
+- The logic of the lesson.
+
+### What took time 
+- Replacing getch() and ungetch() in ex4-10
+
+### Exercises
+| Exercise | Description | Status |
+|----------|-------------|--------|
+| 4-10 | Used getline() in order to get rid of getch() and ungetch() | ✅ |
+| 4-11 | Used a static variable | ✅ |
+
+
