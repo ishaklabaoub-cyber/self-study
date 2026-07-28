@@ -64,7 +64,7 @@
 
 **Key Takeaway:** 
 -  When encounter with a problem with flags and machine state , using a pencil and a paper to trace execution helps a lot and saves a lot of time.
-### Session 3 - 14/07/2026
+### Session 4 - 14/07/2026
 **Time spent:** 1.5hr
 ### What i covered 
 - Static variables.
@@ -80,5 +80,22 @@
 |----------|-------------|--------|
 | 4-10 | Used getline() in order to get rid of getch() and ungetch() | ✅ |
 | 4-11 | Used a static variable | ✅ |
+
+### Session 5 - 28/07/2026
+**Time spent:** 2 hrs
+### What i covered 
+- Recursion.
+
+### What clicked easily
+- The logic of the lesson.
+
+### What took time 
+- Nothing really.
+
+### Exercises
+| Exercise | Description | Status |
+|----------|-------------|--------|
+| 4-12 | Apply the printd() logic to itoa | ✅ |
+| 4-13 | reverse a string in place with recursion | ✅ |
 
 
