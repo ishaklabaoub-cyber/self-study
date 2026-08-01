@@ -20,23 +20,29 @@
 | 5-1 | fix the getint() bug | ✅ |
 | 5-2 | make a getfloat() function with the same logic as getint()| ✅ |
 
-### Session 2 - 7/07/2026
+### Session 2 - 1/08/2026
 
-**Time spent:** 1h.
+**Time spent:** 1.5h.
 
 ### What I covered
-- External variables.
+- Pointers and Arrays.
+- Address Arithmetic.
+- Character Pointers and Functions.
 
 ### What clicked easily
 - The lesson.
 ### What took time
-- Honestly nothing even the exercises are simple enough.
+- Logic of pointers and manupilation of strings with it.
 
 ### Exercises
 | Exercise | Description | Status |
 |----------|-------------|--------|
-| 4-3 | Added the % option in the reverse polish calculator | ✅ |
-| 4-4 | added some commands to the calculator | ✅ |
+| 5-3 | Write a pointer version of strcat() | ✅ |
+| 5-4 | Write a function strend() comparing the end of a string | ✅ |
+| 5-5 | Write a pointer version of strncpy, strncat, and strncmp| ✅ |
+
+**Key Takeaway:** 
+- With pointers a program can look and be super simple , or if it got handle wrong, it  can be super complex and not clear .
 
 ### Session 3 - 9/07/2026
 
