@@ -44,26 +44,26 @@
 **Key Takeaway:** 
 - With pointers a program can look and be super simple , or if it got handle wrong, it  can be super complex and not clear .
 
-### Session 3 - 9/07/2026
+### Session 3 - 8/08/2026
 
-**Time spent:** 5 hrs.
+**Time spent:** 3.5 hrs.
 
 ### What i covered 
-- The same lesson (has a lot of exercises)
+- Multi dimension arrays vs pointers.
+- Command line arguments.
 ### What took time
-- Discover the appropriate design system for the exercise
+- figuring out how argv and argc works.
 
 ### Exercises
 | Exercise | Description | Status |
 |----------|-------------|--------|
-| 4-5 | Adding the (sin,cos,exp,pow) to the calculator| ✅ |
-| 4-6 | Added some commands to handle variable (got stuck on this one) | ✅ |
-| 4-7 | Added the ungets() function to pushback an entire string | ✅ |
-| 4-8 | Configuring getch() and ungetch() to handle just one character | ✅ |
-| 4-9 | Working with the previous exercise solution to accept EOF as an input | ✅ |
+| 5-7 | Utilising  a chunk of memory like a buffer string unstead of allocating in the readlines() | ✅ |
+| 5-8 | Added the error checking  | ✅ |
+| 5-9 | Rewrite the routines day_of_year and month_day with pointers instead of
+indexing. | ✅ |
+| 5-10 | Work with the command line arguments unstead of getch and ungetch in RPC | ✅ |
 
-**Key Takeaway:** 
--  When encounter with a problem with flags and machine state , using a pencil and a paper to trace execution helps a lot and saves a lot of time.
+
 ### Session 4 - 14/07/2026
 **Time spent:** 1.5hr
 ### What i covered 
