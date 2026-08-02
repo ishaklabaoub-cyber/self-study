@@ -64,6 +64,7 @@ indexing. | ✅ |
 | 5-10 | Work with the command line arguments unstead of getch and ungetch in RPC | ✅ |
 
 
+
 ### Session 4 - 14/07/2026
 **Time spent:** 1.5hr
 ### What i covered 
