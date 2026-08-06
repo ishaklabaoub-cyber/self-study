@@ -45,7 +45,6 @@ int main(int argc,char* argv[])
 		n = nlines;
 	}
 	writelines(lineptr,n);
-	printf("\n%d\n",n);
 
 	return 0;
 }
