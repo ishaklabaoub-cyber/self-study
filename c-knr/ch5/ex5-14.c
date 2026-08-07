@@ -15,7 +15,7 @@ int   readlines(char *lineptr[], int nlines);
 void  writelines(char *lineptr[], int nlines);
 void  qsort1(void *lineptr[], int left, int right, int (*comp)(void *, void *));
 int   numcmp(char *, char *);
-int   compare(char*, char*);
+int   compare(char**, char**);
 
 int numeric = 0; 
 int reverse = 0;
@@ -68,11 +68,11 @@ int numcmp(char *s1, char *s2)
 		return 0;
 	}
 }
-int compare(char *s1, char *s2)
+int compare(char **s1, char **s2)
 {
     int cond;
 
-    cond = numeric ? numcmp(s1, s2) : strcmp(s1, s2);
+    cond = numeric ? numcmp(*s1, *s2) : strcmp(*s1, *s2);
 
     if (reverse) cond = -cond; 
 
