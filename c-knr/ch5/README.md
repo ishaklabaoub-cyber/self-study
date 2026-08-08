@@ -66,19 +66,21 @@ indexing. | ✅ |
 
 
 ### Session 4 - 14/07/2026
-**Time spent:** 1.5hr
+**Time spent:** 6hrs
 ### What i covered 
-- Static variables.
+- Pointers to functions.
 
 ### What clicked easily
 - The logic of the lesson.
 
 ### What took time 
-- Replacing getch() and ungetch() in ex4-10
+- Get tripped a little bit in handling multiple command line argument.
 
 ### Exercises
 | Exercise | Description | Status |
 |----------|-------------|--------|
-| 4-10 | Used getline() in order to get rid of getch() and ungetch() | ✅ |
-| 4-11 | Used a static variable | ✅ |
-
+| 5-11 | Modify entab and detab program to accept a list of tab stops as arguments | ✅ |
+| 5-13 | Writing tail program | ✅ |
+| 5-14 | Modify sort program to handle -r -n flags | ✅ |
+| 5-15 | Add option -f to the sorting program | ✅ |
+| 5-16 | Add the directory order -d and make it works in conjunction with -f | ✅ |
