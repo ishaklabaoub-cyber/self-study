@@ -34,9 +34,10 @@ int main(int argc, char *argv[])
 
     j = 1;
     if(argc > 1){    
-    	while(j < argc){	    
-    		if(argv[j][0] == '-'){
-			i = 1;
+	while(j < argc){
+    		i = 0;	
+    		if(argv[j][i] == '-'){
+			i++;
 			while(isalpha(argv[j][i])){
 				if(tolower(argv[j][i]) == 'r'){
 					reverse = 1;
@@ -46,11 +47,11 @@ int main(int argc, char *argv[])
 					fold    = 1;
 				}else if(tolower(argv[j][i]) == 'd'){
 					dir     = 1;
-				}else if(!isdigit(argv[j][i])){
-					field_n = atoi1(argv[j]);
 				}
 				i++;
 			}
+		}if(isdigit(argv[j][i])){
+			field_n = atoi1(argv[j]);
 		}
 		j++;
     	}
