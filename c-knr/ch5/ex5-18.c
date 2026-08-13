@@ -36,7 +36,8 @@ int main() /* convert declaration to words */
 
 			dcl();			 /* parse rest of line */
 			if (tokentype != '\n')
-				printf("syntax error\n");
+				longjmp(recover,1);
+				//printf("syntax error\n");
 			printf("%s: %s %s\n", name, out, datatype);
 		}else{
 			printf("error: bad declaration\n");
@@ -107,12 +108,10 @@ void dirdcl(void)
         dcl();
         if (tokentype != ')')
 		longjmp(recover,1);
-		//printf("error: missing )\n");
     } else if (tokentype == NAME){   /* variable name */
         strcpy(name, token);
     } else{
 	    longjmp(recover,1);
-        //printf("error: expected name or (dcl)\n");
     }
     while ((type=gettoken()) == PARENS || type == BRACKETS) {
         if (type == PARENS)
