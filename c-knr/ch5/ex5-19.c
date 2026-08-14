@@ -30,8 +30,10 @@ int main() /* convert words to declarations */
 	char temp[MAXTOKEN];
 	char prevtoken[500];
 
+
 	while (gettoken() != EOF) {
 		strcpy(out, token);
+		prevtoken[0] = '\0';
 		while ((type = gettoken()) != '\n'){
 			if (type == PARENS || type == BRACKETS){
 				if(strstr(prevtoken,"*")){
@@ -42,7 +44,9 @@ int main() /* convert words to declarations */
 					strcat(out, token);
 				}
 			}else if (type == '*') {
-				if(strstr(prevtoken,"()") != NULL || strstr(prevtoken,"*") != NULL || strstr(prevtoken,"[]") != NULL){
+				if(strstr(prevtoken,"()") == NULL || 
+				   strstr(prevtoken,"*")  == NULL || 
+				   strstr(prevtoken,"[]") == NULL ){
 					sprintf(temp, "*%s", out);
 				}else{
 					sprintf(temp, "(*%s)", out);
@@ -99,6 +103,9 @@ int gettoken(void) /* return next token */
 			*p = '\0';
 			ungetch(c);
 			return tokentype = NAME;
-			} else
-				return tokentype = c;
+		} else{
+			token[0] = c;
+			token[1] = '\0';
+			return tokentype = c;	
+		}
 }
