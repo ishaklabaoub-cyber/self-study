@@ -44,12 +44,12 @@ int main() /* convert words to declarations */
 					strcat(out, token);
 				}
 			}else if (type == '*') {
-				if(strstr(prevtoken,"()") == NULL || 
-				   strstr(prevtoken,"*")  == NULL || 
-				   strstr(prevtoken,"[]") == NULL ){
-					sprintf(temp, "*%s", out);
-				}else{
-					sprintf(temp, "(*%s)", out);
+				//printf("DEBUG: prevtoken=[%s]\n", prevtoken);   /* temporary */
+				if(strstr(prevtoken,"()") == NULL ||
+				   strstr(prevtoken,"*")  == NULL ||
+				   strstr(prevtoken,"[]") == NULL )
+				{
+					sprintf(temp,"*%s",out);	
 				}
 				strcpy(out, temp);
 			} else if (type == NAME) {
