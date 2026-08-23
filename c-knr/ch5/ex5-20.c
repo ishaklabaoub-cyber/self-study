@@ -6,7 +6,7 @@
 #define BUFSIZE  100
 #define MAXTOKEN 100
 
-enum { NAME, QUALIFIER , PARENS, BRACKETS };
+enum { NAME, PARENS, BRACKETS };
 jmp_buf recover;
 
 void dcl(void);
