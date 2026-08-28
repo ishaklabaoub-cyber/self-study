@@ -3,7 +3,6 @@
 #include <ctype.h>
 
 #define BUFSIZE 100
-//#define NKEYS	(sizeof(keytab) / sizeof(keytab[0]))
 #define MAXWORD 100
 
 char buf[BUFSIZE];
@@ -20,10 +19,7 @@ int 	getword(char*,int);
 int 	binsearch(char*,struct key *,int);
 
 
-/*struct key{
-	char *word;
-	int count;
-};*/
+
 
 struct key keytab[] =
 {
