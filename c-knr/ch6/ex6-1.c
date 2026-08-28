@@ -45,6 +45,7 @@ int main()
 	char word[MAXWORD];
 	
 	while(getword(word,MAXWORD) != EOF){
+			printf("DEBUG : token[%s]\n",word);
 		if ( isalpha(word[0])){
 			if((n = binsearch(word, keytab, NKEYS)) >= 0){
 				keytab[n].count++;
@@ -98,18 +99,32 @@ int getword(char* word,int limit)
 				return EOF;
 		} else if (c == '*'){
 
-			char prev = '/';
+			char prev = 0;
 			while((prev != '*' || c != '/' ) && c != EOF){
 					prev = c;
 					c = getch();	
 			}
 			if(c == EOF)
 				return EOF;
+			c = getch();
 		} else{
 			ungetch(c);
 			c = '/';
 		}
 	}
+	    /* string constant: consume and discard the whole literal, then
+       recurse to get the next real token */
+    	if (c == '"') {
+        	int prevc = 0;
+       		 while ((c = getch()) != EOF) {
+        		    if (c == '"' && prevc != '\\')
+        	      			  break;
+            		prevc = c;
+        	}
+        	if (c == EOF)
+            		return EOF;
+        	return getword(word, limit);
+    	}
 	if (c != EOF){
 		*w++=c;
 	}	
