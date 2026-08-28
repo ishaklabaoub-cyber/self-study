@@ -149,7 +149,7 @@ int getword(char* word,int limit)
 }
 
 void search(char* words[]){
-	int flag = 1;
+	int flag = 1;		/* flag to store a word once not twice */
 	int i = 0,j = 1;
 	int h = 0;
 	while(words[i] != NULL && words[j] != NULL)
@@ -166,7 +166,6 @@ void search(char* words[]){
 			i = j;
 			j++;	
 		}
-
 	}
 	group[h] = NULL;
 }
@@ -196,7 +195,6 @@ void treewords(struct tnode *p){
 	static int i = 0;
 	if(p != NULL){
 		treewords(p->left);
-		//printf("%4d %s\n", p->count, p->word);
 		words[i++] = p->word;
 		treewords(p->right);
 	}
