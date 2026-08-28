@@ -50,7 +50,6 @@ int main()
 	
 	while(getword(word,MAXWORD) != EOF){
 		if ( isalpha(word[0])){
-				printf("DEBUG : token[%s]\n",word);
 			if((n = binsearch(word, keytab, NKEYS)) >= 0){
 				keytab[n].count++;
 			}
@@ -93,7 +92,9 @@ int getword(char* word,int limit)
 		}
 	}
 	if(c == '/'){
+
 		c = getch();
+
 		if (c == '/'){
 			while((c = getch()) != '\n' && c != EOF)
 				;
