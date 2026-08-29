@@ -163,10 +163,6 @@ void search(char* words[]){
 			flag = 0;
 		} else{
 			if(flag == 0){
-				/*int len = strlen(group[--h]);
-				group[h][strlen(group[h])] = '\n';
-				group[h][len + 1] = '\0';
-				h++;*/
 				group[h++] = "\n\t---\n";
 			}
 			flag = 1;
