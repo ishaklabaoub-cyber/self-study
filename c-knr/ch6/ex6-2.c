@@ -60,7 +60,7 @@ int main(int argc,char **argv)
 		printf("\t%s\n",group[i]);
 		i++;
 	}
-	printf("END Program.\n");
+	printf("\nEND Program.\n");
 	return 0;
 }
 int atoi1(char *s){
@@ -162,6 +162,13 @@ void search(char* words[]){
 			j++;
 			flag = 0;
 		} else{
+			if(flag == 0){
+				/*int len = strlen(group[--h]);
+				group[h][strlen(group[h])] = '\n';
+				group[h][len + 1] = '\0';
+				h++;*/
+				group[h++] = "\n\t---\n";
+			}
 			flag = 1;
 			i = j;
 			j++;	
