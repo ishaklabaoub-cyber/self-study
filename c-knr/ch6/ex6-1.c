@@ -45,7 +45,6 @@ int main()
 	char word[MAXWORD];
 	
 	while(getword(word,MAXWORD) != EOF){
-			printf("DEBUG : token[%s]\n",word);
 		if ( isalpha(word[0])){
 			if((n = binsearch(word, keytab, NKEYS)) >= 0){
 				keytab[n].count++;
