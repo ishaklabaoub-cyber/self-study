@@ -9,8 +9,6 @@
 
 char buf[BUFSIZE];
 int  bufp = 0;
-char *tree_words[MAXWORD];
-int  tree_nums[MAXNUMS];
 int  print_index = 0;
 
 
@@ -20,8 +18,8 @@ int 	getword(char*,int);
 struct  tnode *addtree_words(struct tnode*,char*);
 struct  tnode *talloc();
 void 	print_tree(struct tnode*);
-void    sorting(int[],char*[],int);
-int 	find_max(int*,int,int);
+void    sorting(struct tnode*,int);
+int 	find_max(struct tnode*,int,int);
 
 struct tnode{
 	char *word;			/* word from input */
@@ -30,11 +28,13 @@ struct tnode{
 	struct tnode *right;		/* right child */
 };
 
+struct tnode result[MAXWORD];
 
 
 
 int main()
 {
+	int i;
 	struct tnode *root;
 	char word[MAXWORD];
 
@@ -47,12 +47,11 @@ int main()
 	}
 	putchar('\n');
 	print_tree(root);
-	int len = sizeof(tree_nums) / sizeof(tree_nums[0]);
-	sorting(tree_nums,tree_words,len);
+	sorting(result,print_index);
 
-	int i = 0;
-	while(tree_words[i] != NULL){
-		printf("\t%d %s\n", tree_nums[i], tree_words[i]);
+	i = 0;
+	while(result[i].occ != 0){
+		printf("\t%d %s\n", result[i].occ, result[i].word);
 		i++;
 	}
 		
@@ -156,37 +155,36 @@ struct tnode *addtree_words(struct tnode *p,char* w){
 	return p;
 }
 
-int  find_max(int *arr,int len,int index){
-	int max = arr[index];
+int  find_max(struct tnode *result,int len,int index){
+	int max = result[index].occ;
 	int j = index;
 	for(int i = index+1;i < len;i++){
-		if(arr[i] > max){
-			max = arr[i];	
+		if(result[i].occ > max){
+			max = result[i].occ;	
 			j = i;
 		}
 	}
 	return j;
 }
 
-void sorting(int arr[],char *words[],int len){
+void sorting(struct tnode *result,int len){
 	char *temp_word;
 	int  temp_num;
 	int  j = 0;
 	for(int i = 0;i < len-1;i++){
-			j = find_max(arr,len,i);
-		if(arr[i] < arr[j]){
-			temp_word = words[i]; 		temp_num = arr[i];
-			words[i]   = words[j];		arr[i]	 = arr[j];
-			words[j]   = temp_word; 	arr[j]   = temp_num;
+		j = find_max(result,len,i);
+		if(result[i].occ < result[j].occ){
+			temp_word = result[i].word; 			temp_num 	 = result[i].occ;
+			result[i].word   = result[j].word;		result[i].occ	 = result[j].occ;
+			result[j].word   = temp_word; 			result[j].occ   = temp_num;
 		}
 	}
 }
 void print_tree(struct tnode *p){
-	//static int i = 0;
 	if(p != NULL){
 		print_tree(p->left);
-		tree_words[print_index] = p->word;
-		tree_nums[print_index]  = p->occ;
+		result[print_index].word = p->word;
+		result[print_index].occ  = p->occ;
 		print_index++;
 		print_tree(p->right);
 	}
