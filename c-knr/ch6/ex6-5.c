@@ -16,7 +16,6 @@ struct nlist{		/* table entry:  */
 static struct nlist *hashtab[HASHSIZE];		/* pointer table */
 char	buf[BUFSIZE];
 int 	bufp = 0;
-char    *prev_name = "none";
 
 unsigned hash(char*);
 struct nlist *lookup(char*);
@@ -118,7 +117,6 @@ struct nlist *lookup(char *s){
 		if(strcmp(s,np->name) == 0){
 			return np;    /* found */	
 		}
-		prev_name = np->name;
 	}
 	return NULL;	/* not found */
 }
