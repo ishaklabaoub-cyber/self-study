@@ -16,7 +16,6 @@ struct nlist{		/* table entry:  */
 static struct nlist *hashtab[HASHSIZE];		/* pointer table */
 char	buf[BUFSIZE];
 int 	bufp = 0;
-int     defn_flag = 0;
 char    name1[BUFSIZE];
 
 unsigned hash(char*);
