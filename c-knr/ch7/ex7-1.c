@@ -36,7 +36,7 @@ int main(int argc,char **argv)
 			}
 			token = strtok(NULL, TOK_DELIM);
 		}
-		tokens[++pos] = NULL;
+		tokens[pos] = NULL;
 
 		for(int i = 0; tokens[i] != NULL; i++)
 		{
