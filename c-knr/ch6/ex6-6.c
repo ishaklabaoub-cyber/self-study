@@ -33,9 +33,9 @@ int main()
 
 	while( (getword(word,MAXWORD)) != EOF){
 		if((to_replace = lookup(word)) != NULL){
-			printf(" %s",to_replace->defn);
+			printf("%-1s;",to_replace->defn);
 		} else{
-			printf(" %s",word);
+			printf("%-1s",word);
 		}
 	}
 	return 0;
