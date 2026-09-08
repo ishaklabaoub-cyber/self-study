@@ -18,9 +18,9 @@ int main()
 		if(isprint(c)){
 			putchar(c);
 			column_c++;
-		} else if(c >= 0 && c <= 32 )
-		{
-			printf("/%#o",c);
+		} else if(c >= 0 && c <= 32 ){
+
+			printf("/%#o",c);	// print the octal representation with a leading 0 (the '#' option)
 
 			// for column counting
 			if(c >0 && c < 8){
