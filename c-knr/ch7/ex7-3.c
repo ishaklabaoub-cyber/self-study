@@ -6,7 +6,7 @@ void minprintf(char *fmt, ...);
 int main()
 {
 	int n = 234;
-	minprintf("%5d\n",n);
+	minprintf("%125d\n",n);
 	return 0;
 }
 
@@ -25,10 +25,14 @@ void minprintf(char *fmt, ...){
 			continue;
 		}
 		if(*++p > '0' && *p <= '9'){
-			flag = 1;
-			int f_width = *p - '0';	// minimum field width
+			int f_width = 0;
 			int temp , num_length = 0;
-
+			flag = 1;
+			while(*p > '0' && *p <= '9'){
+				f_width = (f_width * 10) + (*p - '0');
+				++p;	
+			}
+		
 			ival = va_arg(ap, int);
 			temp = ival;
 			
@@ -45,16 +49,20 @@ void minprintf(char *fmt, ...){
 					f_width--;
 				}
 			}
-
-			++p;
 		}
+		
+		
 		switch(*p){
 			case '%':
 				putchar(*p);
 				break;
 			case 'c':
-				ival = (char)va_arg(ap, int);
-				putchar(ival);
+				if(flag){
+					putchar(ival);
+				} else{
+					ival = (char)va_arg(ap, int);
+					putchar(ival);
+				}
 				break;	
 			case 'o':
 				if(flag){
