@@ -5,8 +5,8 @@ void minprintf(char *fmt, ...);
 
 int main()
 {
-	int n = 234;
-	minprintf("%125d\n",n);
+	int n = 234;			
+	minprintf("%125d\n",n);		/* example */
 	return 0;
 }
 
@@ -28,7 +28,7 @@ void minprintf(char *fmt, ...){
 			int f_width = 0;
 			int temp , num_length = 0;
 			flag = 1;
-			while(*p > '0' && *p <= '9'){
+			while(*p > '0' && *p <= '9'){		// parsing multi-digit field width
 				f_width = (f_width * 10) + (*p - '0');
 				++p;	
 			}
@@ -51,42 +51,23 @@ void minprintf(char *fmt, ...){
 			}
 		}
 		
-		
+		if(!flag)ival = va_arg(ap, int);
+
 		switch(*p){
 			case '%':
 				putchar(*p);
 				break;
 			case 'c':
-				if(flag){
-					putchar(ival);
-				} else{
-					ival = (char)va_arg(ap, int);
-					putchar(ival);
-				}
+				putchar(ival);
 				break;	
 			case 'o':
-				if(flag){
-					printf("%o", ival);
-				} else{
-					ival = va_arg(ap, int);
-					printf("%o", ival);
-				}
+				printf("%o", ival);
 				break;	
 			case 'x':
-				if(flag){
-					printf("%x", ival);
-				} else{
-					ival = va_arg(ap, int);
-					printf("%x", ival);
-				}
+				printf("%x", ival);
 				break;	
 			case 'd':
-				if(flag){
-					printf("%d", ival);
-				} else{
-					ival = va_arg(ap, int);
-					printf("%d", ival);
-				}
+				printf("%d", ival);
 				break;
 			case 'f':
 				dval = va_arg(ap, double);
