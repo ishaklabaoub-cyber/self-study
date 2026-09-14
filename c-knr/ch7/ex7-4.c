@@ -14,8 +14,7 @@ int main()
 {
     int n = 100;
     int m = 200;
-    //char temp[MAX_LENGTH] = "hello";
-    minscanf("enter%d %d", &n, &m);
+    minscanf("enter%d %d", &n, &m);         /* Example */
     printf("n m --> %d %d\n", n, m);
 	return 0;
 }
@@ -32,20 +31,20 @@ int minscanf(char *fmt,...){
     va_start(ap, fmt);
     for(p = fmt; *p; p++){
         conversion_type = 0;
-        while(isspace(*p)){     // skipping white spaces
+        while(isspace(*p)){     // skipping white-spaces
             p++;
         }
 
         if(*p != '%'){
-            while((c = getchar()) != EOF && c != '\n' && *p != '%' && *p != '\0'){
+            while((c = getchar()) != EOF && c != '\n' && *p != '%' && *p != '\0'){  // checking the input to the format
                     if(c != *p){
-                        conversion_type = 'v';
+                        conversion_type = 'v';      // 'v' is a sentinel value
                         break;
                     }
                     p++;
             }
         }
-            while(isspace(*p)){
+            while(isspace(*p)){     // skipping white-spaces to get to the '%' hopefully
                 p++;
             }
         if(*p == '%' && conversion_type != 'v'){
@@ -56,7 +55,7 @@ int minscanf(char *fmt,...){
             conversion_type = *++p;
                   
 
-            while((c = getchar()) != EOF && c != '\n' && !isspace(c) && j < MAX_LENGTH){
+            while((c = getchar()) != EOF && c != '\n' && !isspace(c) && j < MAX_LENGTH){    // store the value in a string
                 value[j] = c;
                 j++;
             }
