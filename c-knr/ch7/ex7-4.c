@@ -6,6 +6,8 @@
 
 #define MAX_LENGTH 100
 
+
+
 int minscanf(char*,...);
 
 int main()
@@ -54,19 +56,12 @@ int minscanf(char *fmt,...){
             conversion_type = *++p;
                   
 
-          /*while(isspace(c = getchar()))
-                ;
-            c = 0;*/
             while((c = getchar()) != EOF && c != '\n' && !isspace(c) && j < MAX_LENGTH){
                 value[j] = c;
                 j++;
             }
             value[j] = '\0';
-            printf("\t\tDEBUG: value[%s]\n", value);
         }
-        while(isspace(c = getchar()))
-                ;
-        printf("\t\tDEBUG0\n");
         j = 0;
         switch(conversion_type){
             case 'v': 
