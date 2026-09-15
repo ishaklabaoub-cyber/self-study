@@ -17,7 +17,7 @@ int main(int argc,char **argv)
         char *str;
         if(( str = fcmp(argv[1], argv[2]) ) == NULL){
             printf("There is no different between the files\n");
-        } else if(strcmp(str, "0")){
+        } else if(strcmp(str, "0") == 0){
             printf("Error occured\n");
         }else{
             printf("Here's the different line: %s\n", str);
@@ -63,6 +63,10 @@ char *fcmp(char *path1,char *path2){
         fclose(fp2);
         return NULL;    // there is no difference
     } else if(!feof(fp1)){
+        if(fgets(s1, MAX_LENGTH, fp1) == NULL){
+            perror("fgets");
+            return "0";
+        }
         fclose(fp1);
         fclose(fp2);
         if((ret = strdup(s1)) == NULL){
@@ -71,6 +75,10 @@ char *fcmp(char *path1,char *path2){
         }
         return ret;
     } else{
+        if(fgets(s2, MAX_LENGTH, fp2) == NULL){
+            perror("fgets");
+            return "0";
+        }
         fclose(fp1);
         fclose(fp2);
          if((ret = strdup(s2)) == NULL){
