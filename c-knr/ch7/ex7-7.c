@@ -2,9 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MAX_LENGTH 100
 
-int file_find_pattern(char *path, char* pattern);
+int file_find_pattern(char *path, char* pattern, int file_nbr);
 int input_find_pattern(char *pattern);
 
 
@@ -12,6 +11,7 @@ int main(int argc,char **argv)
 {
     char *pattern;
     char *path; 
+    int i, filenbr;
 
     if(argc == 1){
     
@@ -26,20 +26,25 @@ int main(int argc,char **argv)
         }
 
     } else if(argc > 2){
+        filenbr = argc - 2;
         pattern  = argv[1];
-        path = argv[2];
-        if(file_find_pattern( path, pattern) == 0){
-            printf("pattern not found.\n");
+        i = 0;
+        while(argc-- > 2){
+            path = argv[2 + i];
+            if(file_find_pattern( path, pattern, filenbr) == 0){
+                printf("pattern not found.\n");
+            }
+            i++;
         }
     }
 
     return 0;
 }
 
-int file_find_pattern(char *path, char* pattern){
+int file_find_pattern(char *path, char* pattern, int file_nbr){
     FILE *fp;
-    char *lineptr[MAX_LENGTH];
-    size_t n = MAX_LENGTH;
+    char *lineptr;
+    size_t n = 0;
     long lineno = 0;
     int  found = 0;
 
@@ -48,31 +53,32 @@ int file_find_pattern(char *path, char* pattern){
         perror("fopen");
         return -1;
     }
-
-    while(getline(lineptr, &n, fp) > 0){
+    if(file_nbr > 1)
+        printf("%s:\n", path);
+    while(getline(&lineptr, &n, fp) > 0){
             lineno++;
-            if(strstr(*lineptr, pattern) != NULL){
+            if(strstr(lineptr, pattern) != NULL){
                 found++;
                 printf("%ld: ", lineno);
-                printf("%s", *lineptr);
+                printf("%s", lineptr);
             }
     }
     return found;
 }
 
 int input_find_pattern(char *pattern){
-    char *lineptr[MAX_LENGTH];
-    size_t n = MAX_LENGTH;
+    char *lineptr;
+    size_t n = 0;
     int found = 0;
     long lineno = 0;
 
-    while(getline(lineptr, &n, stdin) > 0){
+    while(getline(&lineptr, &n, stdin) > 0){
         lineno++;        
        
-        if(strstr(*lineptr, pattern) != NULL){
+        if(strstr(lineptr, pattern) != NULL){
             found++;
             printf("%ld: ", lineno);
-            printf("%s", *lineptr);
+            printf("%s", lineptr);
         }
     }
     return found;
