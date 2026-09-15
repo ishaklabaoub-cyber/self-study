@@ -17,7 +17,9 @@ int main(int argc,char **argv)
         char *str;
         if(( str = fcmp(argv[1], argv[2]) ) == NULL){
             printf("There is no different between the files\n");
-        } else{
+        } else if(strcmp(str, "0")){
+            printf("Error occured\n");
+        }else{
             printf("Here's the different line: %s\n", str);
         }
     
@@ -39,7 +41,7 @@ char *fcmp(char *path1,char *path2){
     
     if(fp1 == NULL || fp2 == NULL){
         perror("fopen");
-        return NULL;
+        return "0";
     }
     
     while(fgets(s1, MAX_LENGTH, fp1) != NULL && fgets(s2, MAX_LENGTH, fp2) != NULL){
@@ -47,12 +49,34 @@ char *fcmp(char *path1,char *path2){
         if(strcmp(s1, s2) == 0){
             continue;   // if they match fetch another two lines
         } else{
-            ret = strdup(s1);
+            fclose(fp1);
+            fclose(fp2);
+            if( (ret = strdup(s1)) == NULL){
+                perror("strdup");
+                return "0";
+            }
             return ret;    // different lines
         }
     }
-
-    fclose(fp1);
-    fclose(fp2);
-    return NULL;    // there is no difference
+    if(feof(fp1) && feof(fp2)){
+        fclose(fp1);
+        fclose(fp2);
+        return NULL;    // there is no difference
+    } else if(!feof(fp1)){
+        fclose(fp1);
+        fclose(fp2);
+        if((ret = strdup(s1)) == NULL){
+            perror("strdup");
+            return "0";
+        }
+        return ret;
+    } else{
+        fclose(fp1);
+        fclose(fp2);
+         if((ret = strdup(s2)) == NULL){
+            perror("strdup");
+            return "0";
+        }
+        return ret;   
+    }
 }
