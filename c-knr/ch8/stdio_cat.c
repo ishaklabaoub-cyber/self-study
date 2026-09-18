@@ -39,7 +39,7 @@ void display_files(char *path, int filenbr){
         return;
     }
     if(filenbr > 1){
-        printf("%s\n", path);
+        printf("%s:\n", path);
     }
     while(getline(&lineptr, &n, fp) > 0){
         printf("%s",lineptr);
