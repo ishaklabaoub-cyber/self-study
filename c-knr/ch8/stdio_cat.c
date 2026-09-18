@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void display_files(char *path, int filenbr);
 
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
         while(getline(&lineptr, &n, stdin) > 0){
             printf("%s", lineptr);
         }
-
+        free(lineptr);
     } else if(argc > 1){
         
         filenbr = argc - 1;
@@ -44,5 +45,6 @@ void display_files(char *path, int filenbr){
     while(getline(&lineptr, &n, fp) > 0){
         printf("%s",lineptr);
     }
+    free(lineptr);
     fclose(fp);
 }

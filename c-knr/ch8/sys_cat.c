@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#define BUFSIZE 1024
+#define BUFSIZE 1
 
 void read_file(char *path, int filenbr);
 
@@ -48,4 +48,5 @@ void read_file(char *path, int filenbr){
         if(write(1, buf, n) != n)
             perror("write");
     }
+    close(fd);
 }
