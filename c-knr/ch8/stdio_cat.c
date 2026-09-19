@@ -25,6 +25,7 @@ int main(int argc, char *argv[])
             display_files(path, filenbr);
         }
     }
+
     return 0;
 }
 
@@ -39,12 +40,15 @@ void display_files(char *path, int filenbr){
         perror("fopen");
         return;
     }
+    
     if(filenbr > 1){
         printf("%s:\n", path);
     }
+    
     while(getline(&lineptr, &n, fp) > 0){
         printf("%s",lineptr);
     }
+    
     free(lineptr);
     fclose(fp);
 }
