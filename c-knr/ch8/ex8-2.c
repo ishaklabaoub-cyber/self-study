@@ -3,7 +3,16 @@
 #include <fcntl.h>
 
 #define PERMS 0666
+#define OPEN_MAX 20
 
+typedef struct _iobuf{
+    int cnt;
+    char *ptr;
+    char *base;
+    struct {
+        unsigned 
+    } flags;
+} FILE;
 
 int main()
 {
@@ -43,4 +52,11 @@ FILE *fopen(char *name, char *mode){
     fp->base = NULL;
     fp->flag = (*mode == 'r') ? _READ : _WRITE;
     return fp;
+}
+
+
+int _fillbuf(FILE *fp){
+    int bufsize;
+
+    if((fp->flags.read && fp->flags.))
 }
