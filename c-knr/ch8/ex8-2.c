@@ -10,8 +10,13 @@ typedef struct _iobuf{
     char *ptr;
     char *base;
     struct {
-        unsigned 
+        unsigned read  : 1;
+        unsigned write : 1;
+        unsigned unbuf : 1;
+        unsigned eof   : 1;
+        unsigned err   : 1;
     } flags;
+    int fd;
 } FILE;
 
 int main()
@@ -57,6 +62,26 @@ FILE *fopen(char *name, char *mode){
 
 int _fillbuf(FILE *fp){
     int bufsize;
+    
+    fp->flags.eof = 1;
+    if( fp->flag.read || fp->flag.err || fp->flag.eof )
+        return EOF;        
+    bufsize = (fp->flag.unbuf) ? 1 : BUFSIZ;
 
-    if((fp->flags.read && fp->flags.))
+    if(fp->base == NULL)
+        if((fp->base = (char *) malloc(bufsize)) == NULL)
+            return EOF;
+        
+    fp->ptr = fp->base;
+    fp->cnt = read(fp->fd, fd->ptr, bufsize);
+    if(--fp->cnt < 0){
+        if(fp->cnt == -1){
+            fp->flag.eof = 1;
+        } else{
+            fp->flag.err = 1;
+        }
+        fp->cnt = 0;
+        return EOF;
+    }
+    return (unsigned char) *fp->ptr++;
 }
