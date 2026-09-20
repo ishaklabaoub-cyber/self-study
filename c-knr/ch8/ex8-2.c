@@ -33,8 +33,8 @@ FILE *fopen(char *name, char *mode){
     if(*mode != 'w' && *mode != 'r' && *mode != 'a')
         return NULL;
 
-    for(fp = _iob;fp < _iob + OPEN_MAX)
-        if(fp->flag.read || fp->flag.write)
+    for(fp = _iob;fp < _iob + OPEN_MAX;fp++)
+        if(fp->flags.read || fp->flags.write)
             break;      /* found free slot */
     if(fp >= _iob + OPEN_MAX)       /* no free slots */
             return NULL;
@@ -46,7 +46,7 @@ FILE *fopen(char *name, char *mode){
             fd = creat(name, PERMS);
         lseek(fd, 0L, 2);
     } else{
-        fd = open(name, _RONLY, 0);
+        fd = open(name, O_RONLY, 0);
     }
 
     if(fd == -1)
@@ -55,7 +55,7 @@ FILE *fopen(char *name, char *mode){
     fp->fd   = fd;
     fp->cnt  = 0;
     fp->base = NULL;
-    fp->flag = (*mode == 'r') ? _READ : _WRITE;
+    fp->flags = (*mode == 'r') ? _READ : _WRITE;
     return fp;
 }
 
@@ -64,9 +64,9 @@ int _fillbuf(FILE *fp){
     int bufsize;
     
     fp->flags.eof = 1;
-    if( fp->flag.read || fp->flag.err || fp->flag.eof )
+    if( fp->flags.read || fp->flags.err || fp->flags.eof )
         return EOF;        
-    bufsize = (fp->flag.unbuf) ? 1 : BUFSIZ;
+    bufsize = (fp->flags.unbuf) ? 1 : BUFSIZ;
 
     if(fp->base == NULL)
         if((fp->base = (char *) malloc(bufsize)) == NULL)
@@ -76,9 +76,9 @@ int _fillbuf(FILE *fp){
     fp->cnt = read(fp->fd, fd->ptr, bufsize);
     if(--fp->cnt < 0){
         if(fp->cnt == -1){
-            fp->flag.eof = 1;
+            fp->flags.eof = 1;
         } else{
-            fp->flag.err = 1;
+            fp->flags.err = 1;
         }
         fp->cnt = 0;
         return EOF;
