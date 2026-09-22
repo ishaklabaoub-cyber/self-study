@@ -66,8 +66,8 @@ int _flushbuf(int c, FILE1 *fp)
             perror("write");
             return EOF;
          }
-        fp->ptr = fp->base;
-        fp->ptr = c;
+        fp->ptr  = fp->base;
+        *fp->ptr = c;
         fp->ptr++;
         fp->cnt = BUFSIZ - 1;
     }
@@ -84,7 +84,10 @@ int fflush1(FILE1 *fp)
 {
     int num_written;
     size_t character_written;
-
+    
+    if(!fp->flags.write || fp->flags.err || fp->flags.eof)
+        return EOF;
+    
     if(fp->base == NULL && !fp->flags.unbuf){
         if((fp->base = (char *) malloc(BUFSIZ)) == NULL){
             fp->flags.unbuf = 1;
@@ -94,12 +97,9 @@ int fflush1(FILE1 *fp)
             fp->cnt = BUFSIZ - 1;
         }
     }
-    if(!fp->flags.write || fp->flags.err || fp->flags.eof)
-        return EOF;
-
-
+    
     character_written = fp->ptr - fp->base;
-        
+         
     if((num_written = write(fp->fd, fp->base, character_written)) == -1){
         perror("write");
         return EOF;
