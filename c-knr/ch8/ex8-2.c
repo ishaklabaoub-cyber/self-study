@@ -29,6 +29,7 @@ static FILE1 _iob[OPEN_MAX] = {
 };
 
 FILE1 *fopen1(char *, char *);
+int   _fillbuf(FILE1*);
 
 int main()
 {
