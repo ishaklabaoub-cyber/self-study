@@ -90,6 +90,7 @@ int fflush1(FILE1 *fp)
     
     if(fp->base == NULL && !fp->flags.unbuf){
         if((fp->base = (char *) malloc(BUFSIZ)) == NULL){
+            // malloc failed
             fp->flags.unbuf = 1;
             return EOF;
         } else{
@@ -116,9 +117,25 @@ int fflush1(FILE1 *fp)
 
 int fseek1(FILE1 *fp, long offset, int origin)
 {
-    if(fp->flags.write){
-        fflush1(fp);
+    if(fp->flags.err)
+        return -1;
+
+    if(fp->flags.write && (fp->base != NULL)){  
+        if(fflush1(fp) == EOF)
+            return -1;
     }
+    if(fp->flags.read){
+            fp->cnt = 0;    
+    }
+
+    if(lseek(fp->fd, offset, origin) == -1){
+        // lseek failed
+        perror("lseek");
+        return -1;
+    }
+    
+    fp->flags.eof = 0;
+
     return 0;
 }
 
