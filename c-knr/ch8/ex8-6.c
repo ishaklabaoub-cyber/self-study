@@ -25,13 +25,34 @@ static Header *freep = NULL;    /* staht of free list */
 void *malloc1(unsigned nbytes);
 static Header *morecore(unsigned nu);
 void *calloc1(unsigned nobj, unsigned size);
+void free1(void* ap);
 
 int main()
 {
         
     return 0;
 }
+void free1(void *ap)
+{
+    Header *bp, *p;
 
+    bp = (Header *)ap - 1;    /* point to block header */
+    for (p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
+        if (p >= p->s.ptr && (bp > p || bp < p->s.ptr))
+            break;  /* freed block at start or end of arena */
+
+    if (bp + bp->s.size == p->s.ptr) {  /* join to upper nbr */
+        bp->s.size += p->s.ptr->s.size;
+        bp->s.ptr = p->s.ptr->s.ptr;
+    } else
+        bp->s.ptr = p->s.ptr;
+    if (p + p->s.size == bp) {          /* join to lower nbr */
+        p->s.size += bp->s.size;
+        p->s.ptr = bp->s.ptr;
+    } else
+        p->s.ptr = bp;
+    freep = p;
+}
 static Header *morecore(unsigned nu) {
     char *cp;
     Header *up;
