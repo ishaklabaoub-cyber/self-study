@@ -35,8 +35,14 @@ int main()
 void free1(void *ap)
 {
     Header *bp, *p;
-
+    
+    
     bp = (Header *)ap - 1;    /* point to block header */
+    
+    if(bp->s.size >= MAX_CAP){
+        fprintf(stderr, "free1: pointer passed to free1 its size is invalid\n");
+        return;
+    }
     for (p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
         if (p >= p->s.ptr && (bp > p || bp < p->s.ptr))
             break;  /* freed block at start or end of arena */
