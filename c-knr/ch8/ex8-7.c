@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 
@@ -97,8 +96,8 @@ void *malloc1(unsigned nbytes) {
                 p += p->s.size;
                 p->s.size = nunits;
             }
-            freep = p;
-            return (void *)p+1;
+            freep = prevp;
+            return (void *) (p+1);
         }
         if(p == freep){
             if((p = morecore(nunits)) == NULL)
