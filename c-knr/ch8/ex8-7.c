@@ -34,12 +34,17 @@ int main()
 void free1(void *ap)
 {
     Header *bp, *p;
-    
-    
+    if(ap == NULL){
+        fprintf(stderr, "free1: pointer passed is null.\n");
+        return;
+    } else if(freep == NULL){       /* nothing gets allocated */
+        fprintf(stderr, "free1: nothing gets allocated.\n");
+        return;
+    }
     bp = (Header *)ap - 1;    /* point to block header */
     
-    if(bp->s.size >= MAX_CAP){
-        fprintf(stderr, "free1: pointer passed to free1 its size is invalid\n");
+    if(bp->s.size >= MAX_CAP || bp->s.size == 0){
+        fprintf(stderr, "free1: pointer passed to free1 its size is invalid.\n");
         return;
     }
     for (p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
@@ -77,7 +82,9 @@ static Header *morecore(unsigned nu) {
 void *malloc1(unsigned nbytes) {
     Header *p, *prevp;
     unsigned nunits;
-    
+    if(nbytes == 0)
+        return NULL;
+
     nunits = (nbytes+sizeof(Header)-1) / sizeof(Header) + 1;
         if(nunits >= MAX_CAP)
             return NULL;        /* invalid size to request */

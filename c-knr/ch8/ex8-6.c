@@ -29,9 +29,9 @@ void free1(void* ap);
 int main()
 {
     int  *arr1;
-    arr1  = calloc1(5, sizeof(int));
+    arr1  = malloc1(397212937 * sizeof(int));
     if(arr1 == NULL){
-        fprintf(stderr, "calloc1: failed allocation...\n");
+        fprintf(stderr, "malloc1: failed allocation...\n");
         return -1;
     }
 
