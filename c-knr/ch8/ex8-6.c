@@ -28,7 +28,17 @@ void free1(void* ap);
 
 int main()
 {
-        
+    int  *arr1;
+    arr1  = calloc1(5, sizeof(int));
+    if(arr1 == NULL){
+        fprintf(stderr, "calloc1: failed allocation...\n");
+        return -1;
+    }
+
+    for (int i = 0;i < 5;++i) {
+        printf("arr[%d] = %d\n", i+1, arr1[i]);
+    }
+    free1(arr1);
     return 0;
 }
 void free1(void *ap)
@@ -104,5 +114,24 @@ void *malloc1(unsigned nbytes) {
                 return NULL;            /* none left */
         }
     }
+
+}
+
+void *calloc1(unsigned nobj, unsigned size)
+{
+    unsigned total = nobj * size;
+    char *p;
+    if(nobj != 0 && (total / nobj != size))
+        return NULL;
+
+    p = malloc1(total);
+
+    if(p != NULL){
+        memset(p, 0, total);
+    } else{
+        return NULL;
+    }
+
+    return p;
 
 }
