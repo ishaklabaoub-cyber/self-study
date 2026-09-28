@@ -21,18 +21,25 @@ typedef union header Header;
 
 static Header base;             /* empty list to get started */
 static Header *freep = NULL;    /* staht of free list */
+static char pool[1000];
 
 void *malloc1(unsigned nbytes);
 static Header *morecore(unsigned nu);
 void *calloc1(unsigned nobj, unsigned size);
 void free1(void* ap);
-int  bfree(char *p, unsigned n    );
+int  bfree(char *p, unsigned n);
 static void init_list(void);
 
 
 int main()
 {
-        
+    bfree(pool + 3, sizeof(pool) - 3);   
+    void *a = malloc1(50);
+    void *b = malloc1(100);
+    printf("a=%p b=%p pool=%p pool_end=%p\n", a, b, (void*)pool, (void*)(pool + 1000));
+
+    free1(a);
+    free1(b);
     return 0;
 }
 static void init_list(void)
@@ -136,10 +143,11 @@ int bfree(char*p, unsigned n)
     if(align != 0){
         p += (sizeof(Header) - align);
         
-        if(n < align){
+    unsigned adjust = sizeof(Header) - align;
+        if(n < adjust){
             return 1;
         } else{
-            n -= (sizeof(Header) - align);
+            n -= adjust;
         }
     }
     int units = n / sizeof(Header);
